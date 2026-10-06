@@ -8,7 +8,8 @@ def largest_of_three(a, b, c):
 
 
 if __name__ == "__main__":
-    a = int(input("Enter First Number: "))
-    b = int(input("Enter Second Number: "))
-    c = int(input("Enter Third Number: "))
-    print(f"{largest_of_three(a, b, c)} is Largest")
+    a = int(input("Enter first number: "))
+    b = int(input("Enter second number: "))
+    c = int(input("Enter third number: "))
+
+    print("Largest number is:", largest_of_three(a, b, c))
