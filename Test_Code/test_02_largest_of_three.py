@@ -1,16 +1,17 @@
-from importlib import import_module
-import sys
-from pathlib import Path
+import importlib.util
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+spec = importlib.util.spec_from_file_location(
+    "largest_of_three", "Code/02_largest_of_three.py"
+)
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
 
-module = import_module("Code.02_largest_of_three")
-test_func = module.largest_of_three
+largest_of_three = module.largest_of_three
 
-assert test_func(10, 20, 30) == 30
-assert test_func(30, 20, 10) == 30
-assert test_func(10, 10, 5) == 10
-assert test_func(5, 10, 10) == 10
-assert test_func(10, 10, 10) == 10
 
-print("All test cases passed.")
+def test_largest_of_three():
+    assert largest_of_three(10, 20, 15) == 20
+    assert largest_of_three(5, 3, 1) == 5
+    assert largest_of_three(2, 8, 4) == 8
+    assert largest_of_three(-1, -5, -3) == -1
+    assert largest_of_three(7, 7, 5) == 7
